@@ -8,8 +8,8 @@ const Header = () => {
         <span className="headerTitleLg">Blog</span>
       </div>
       <img
-        className="headerImage"
-        src="https://c8.alamy.com/compes/r2wke2/hojas-de-otono-sobre-un-fondo-de-textura-de-madera-otono-banner-plantilla-r2wke2.jpg"
+        className="headerImg"
+        src="https://img.freepik.com/fotos-premium/primer-plano-hermosa-vista-naturaleza-hoja-verde-sobre-fondo-verde-borroso-jardin-espacio-copia-utilizando-como-concepto-pagina-portada-fondo_105035-2134.jpg?w=2000"
         alt=""
       />
     </div>
