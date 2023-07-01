@@ -13,7 +13,7 @@ const Post = () => {
           <span className="postCategory">Music</span>
           <span className="postCategory">Life</span>
         </div>
-        <spa className="postTitle">Lorem ipsum dolor sit amet</spa>
+        <span className="postTitle">Lorem ipsum dolor sit amet</span>
         <hr />
         <span className="postDate">1 hour ago</span>
       </div>
