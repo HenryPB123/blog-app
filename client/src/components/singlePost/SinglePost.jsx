@@ -1,16 +1,34 @@
+import { Link, useLocation } from "react-router-dom";
 import "./singlePost.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const SinglePost = () => {
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
+
+  const [post, setPost] = useState({});
+
+  useEffect(() => {
+    const getPost = async () => {
+      const response = await axios.get(
+        "http://localhost:5000/api/posts/" + pathId
+      );
+      setPost(response.data);
+    };
+    getPost();
+    console.log(post);
+  }, [pathId]);
+
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img
-          src="https://concepto.de/wp-content/uploads/2020/03/musica-e1584123209397.jpg"
-          alt="img"
-          className="singlePostImg"
-        />
+        {post.photo && (
+          <img src={post.photo} alt="img" className="singlePostImg" />
+        )}
+
         <h1 className="singlePostTitle">
-          Lorem ipsum dolor sit amet.
+          {post.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
             <i className="singlePostIcon fa-regular fa-trash-can"></i>
@@ -18,22 +36,21 @@ const SinglePost = () => {
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Henry</b>
+            <Link className="link" to={`/?user=${post.username}`}>
+              Author:{" "}
+              <b>
+                {post.username &&
+                  post.username
+                    .toLowerCase()
+                    .replace(/\b[a-z]/g, (c) => c.toUpperCase())}
+              </b>
+            </Link>
           </span>
-          <span className="singlePostDate">1 hour ago</span>
+          <span className="singlePostDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
-        <p className="singlePostDescription">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus
-          deleniti commodi eos cumque aliquid expedita ipsum, a exercitationem,
-          ullam hic neque nihil? Ipsam veniam itaque quos iste, facere quasi
-          magni? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Ducimus deleniti commodi eos cumque aliquid expedita ipsum, a
-          exercitationem, ullam hic neque nihil? Ipsam veniam itaque quos iste,
-          facere quasi magni? Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Ducimus deleniti commodi eos cumque aliquid expedita
-          ipsum, a exercitationem, ullam hic neque nihil? Ipsam veniam itaque
-          quos iste, facere quasi magni?
-        </p>
+        <p className="singlePostDescription">{post.desc}</p>
       </div>
     </div>
   );

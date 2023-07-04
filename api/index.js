@@ -8,10 +8,12 @@ const authRouter = require("./routes/auth");
 const usersRouter = require("./routes/users");
 const postsRouter = require("./routes/posts");
 const categoriesRouter = require("./routes/categories");
+const cors = require("cors");
 
 dotenv.config();
 // app.use(bodyParser.json());
 // app.use(cookieParser());
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 mongoose
   .connect(process.env.MONGO_URL, {

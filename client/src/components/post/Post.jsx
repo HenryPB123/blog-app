@@ -1,34 +1,26 @@
+import { Link } from "react-router-dom";
 import "./post.css";
 
-const Post = () => {
+const Post = ({ post }) => {
   return (
     <div className="post">
-      <img
-        className="postImg"
-        src="https://i.blogs.es/f82e1a/clay-banks-w_qtfipbjbg-unsplash/450_1000.webp"
-        alt="img"
-      />
+      {post.photo && <img className="postImg" src={post.photo} alt="img" />}
+
       <div className="postInfo">
         <div className="postCategories">
-          <span className="postCategory">Music</span>
-          <span className="postCategory">Life</span>
+          {post.categories.map((category) => (
+            <span className="postCategory">{category.name}</span>
+          ))}
         </div>
-        <span className="postTitle">Lorem ipsum dolor sit amet</span>
+        <Link className="link" to={`/post/${post._id}`}>
+          <span className="postTitle">{post.title}</span>
+        </Link>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="postDescription">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe ex
-        provident sit deserunt, molestiae, accusamus placeat cumque quod nihil
-        autem veritatis, laudantium molestias excepturi nesciunt tenetur unde
-        quos illum optio. Lorem ipsum dolor, sit amet consectetur adipisicing
-        elit. Saepe ex provident sit deserunt, molestiae, accusamus placeat
-        cumque quod nihil autem veritatis, laudantium molestias excepturi
-        nesciunt tenetur unde quos illum optio. Lorem ipsum dolor, sit amet
-        consectetur adipisicing elit. Saepe ex provident sit deserunt,
-        molestiae, accusamus placeat cumque quod nihil autem veritatis,
-        laudantium molestias excepturi nesciunt tenetur unde quos illum optio.
-      </p>
+      <p className="postDescription">{post.desc}</p>
     </div>
   );
 };
