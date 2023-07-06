@@ -9,17 +9,18 @@ const usersRouter = require("./routes/users");
 const postsRouter = require("./routes/posts");
 const categoriesRouter = require("./routes/categories");
 const cors = require("cors");
+const path = require("path");
 
 dotenv.config();
-// app.use(bodyParser.json());
-// app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:5173" }));
+
+app.use(cors());
 app.use(express.json());
+app.use("/images", express.static(path.join(__dirname, "/images")));
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    // useCreateIndex: true,
   })
   .then(console.log("Connected to MongoDB"))
   .catch((error) => console.log(error));

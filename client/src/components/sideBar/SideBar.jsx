@@ -34,8 +34,12 @@ const SideBar = () => {
 
         <ul className="sideBarList">
           {categories.map((category) => (
-            <Link className="link" to={`/?cat=${category.name}`}>
-              <li key={category._id} className="sideBarListItem">
+            <Link
+              key={category._id}
+              className="link"
+              to={`/?cat=${category.name}`}
+            >
+              <li className="sideBarListItem">
                 {category.name &&
                   category.name
                     .toLowerCase()
