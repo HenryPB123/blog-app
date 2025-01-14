@@ -8,6 +8,7 @@ const SinglePost = () => {
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
   const PublicFolder = "http://localhost:5000/images/";
+
   const [post, setPost] = useState({});
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
@@ -33,7 +34,7 @@ const SinglePost = () => {
       });
       window.location.replace("/");
     } catch (error) {
-      //some error
+      console.log(error);
     }
   };
 
@@ -46,10 +47,11 @@ const SinglePost = () => {
       });
       setUpdateMode(false);
     } catch (error) {
-      //some error
+      console.log(error);
     }
   };
 
+  const fallbackImg = post.photo;
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
@@ -57,6 +59,9 @@ const SinglePost = () => {
           <img
             src={PublicFolder + post.photo}
             alt="img"
+            onError={(e) => {
+              e.target.src = fallbackImg; // Cambiar a la imagen alternativa si falla la principal
+            }}
             className="singlePostImg"
           />
         )}
@@ -103,6 +108,7 @@ const SinglePost = () => {
             {new Date(post.createdAt).toDateString()}
           </span>
         </div>
+        <hr />
         {updateMode ? (
           <textarea
             className="singlePostDescriptionInput"

@@ -6,6 +6,13 @@ import { Context } from "../../context/Context";
 function TopBar() {
   const { user, dispatch } = useContext(Context);
   const PublicFolder = "http://localhost:5000/images/";
+  let fallbackImg;
+
+  if (user) {
+    console.log("user desde top", user);
+
+    fallbackImg = user.profilePic;
+  }
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -32,6 +39,7 @@ function TopBar() {
               ABOUT
             </Link>
           </li>
+
           <li className="topListItem">
             <Link className="link" to={"/"}>
               CONTACT
@@ -42,9 +50,6 @@ function TopBar() {
               WRITE
             </Link>
           </li>
-          <li className="topListItem" onClick={handleLogout}>
-            {user && "LOGOUT"}
-          </li>
         </ul>
       </div>
       <div className="topRight">
@@ -54,6 +59,9 @@ function TopBar() {
               className="topImage"
               src={PublicFolder + user.profilePic}
               alt="photo"
+              onError={(e) => {
+                e.target.src = fallbackImg; // Cambiar a la imagen alternativa si falla la principal
+              }}
             />
           </Link>
         ) : (
@@ -70,6 +78,10 @@ function TopBar() {
             </li>
           </ul>
         )}
+        <span className="pName">{user && user.username}</span>
+        <li className="topListItem logout" onClick={handleLogout}>
+          {user && "LOGOUT"}
+        </li>
 
         <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
       </div>

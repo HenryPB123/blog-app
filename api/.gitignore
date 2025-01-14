@@ -1,0 +1,28 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Directorio /node_modules
+node_modules/
+
+# Archivos de entorno
+.env
+
+# Construcción de directorio de salida
+dist/
+build/
+
+# Directorios del editor
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de nodemon
+.pids
+
+# Directorios de multer para archivos cargados (subidos)
+uploads/

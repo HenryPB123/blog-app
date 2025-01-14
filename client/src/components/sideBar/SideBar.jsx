@@ -19,7 +19,7 @@ const SideBar = () => {
       <div className="sideBarItem">
         <span className="sideBarTitle">ABOUT ME</span>
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK_FLjgjPsrVi0953L9xlUaJKOBIx4Urhs0DiJEMk5l568yQ09_oAT7LcNI9p_iXtYGiM&usqp=CAU"
+          src="https://images.pexels.com/photos/904616/pexels-photo-904616.jpeg?auto=compress&cs=tinysrgb&w=800"
           alt="img"
         />
         <p>
@@ -40,10 +40,7 @@ const SideBar = () => {
               to={`/?cat=${category.name}`}
             >
               <li className="sideBarListItem">
-                {category.name &&
-                  category.name
-                    .toLowerCase()
-                    .replace(/\b[a-z]/g, (c) => c.toUpperCase())}
+                {category.name && category.name}
               </li>
             </Link>
           ))}

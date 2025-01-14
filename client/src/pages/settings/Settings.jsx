@@ -13,16 +13,23 @@ const Settings = () => {
 
   const { user, dispatch } = useContext(Context);
   const PublicFolder = "http://localhost:5000/images/";
+  let fallbackImg;
+  if (user) {
+    console.log(user);
+
+    fallbackImg = user.profilePic;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "UPDATE_START" });
     const updatedUser = {
       userId: user._id,
-      username,
-      email,
-      password,
     };
+    if (username) updatedUser.username = username;
+    if (email) updatedUser.email = email;
+    if (password) updatedUser.password = password;
+
     if (file) {
       const data = new FormData();
       const filename = file.name;
@@ -33,7 +40,7 @@ const Settings = () => {
       try {
         await axios.post("http://localhost:5000/api/upload", data);
       } catch (error) {
-        //some error
+        console.log(error);
       }
     }
     try {
@@ -41,8 +48,14 @@ const Settings = () => {
         "http://localhost:5000/api/users/" + user._id,
         updatedUser
       );
-      setSuccess(true);
-      dispatch({ type: "UPDATE_SUCCESS", payload: response.data });
+      if (response.status === 200) {
+        setSuccess(true);
+        dispatch({ type: "UPDATE_SUCCESS", payload: response.data });
+        setTimeout(() => {
+          setSuccess(false);
+          window.location.replace("/");
+        }, 3000);
+      }
     } catch (error) {
       dispatch({ type: "UPDATE_FAILURE" });
     }
@@ -65,6 +78,9 @@ const Settings = () => {
                   : PublicFolder + user.profilePic
               }
               alt="photo"
+              onError={(e) => {
+                e.target.src = fallbackImg; // Cambiar a la imagen alternativa si falla la principal
+              }}
             />
             <label htmlFor="fileInput">
               <i className="settingsProfilePictureIcon fa-regular fa-circle-user"></i>
@@ -73,7 +89,9 @@ const Settings = () => {
               type="file"
               id="fileInput"
               style={{ display: "none" }}
-              onChange={(e) => setFile(e.target.files[0])}
+              onChange={(e) => {
+                setFile(e.target.files[0]);
+              }}
             />
           </div>
           <label>Username</label>

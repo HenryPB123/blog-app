@@ -19,7 +19,7 @@ const Write = () => {
     };
     if (file) {
       const data = new FormData();
-      const filename = file.name;
+      const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
       newPost.photo = filename;
@@ -27,7 +27,7 @@ const Write = () => {
       try {
         await axios.post("http://localhost:5000/api/upload", data);
       } catch (error) {
-        //some error
+        console.log(error);
       }
     }
     try {
@@ -37,7 +37,7 @@ const Write = () => {
       );
       window.location.replace("/post/" + response.data._id);
     } catch (error) {
-      //some error
+      console.log(error);
     }
   };
 

@@ -1,11 +1,17 @@
 .sideBar {
   flex: 3;
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
   padding-bottom: 30px;
-  background-color: #fcf0f0;
+  background: linear-gradient(#e9ecef 40%, #f8f9fa 80%);
+  box-shadow: 0 4px 8px 0 #e9ecef;
+  border-radius: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-height: max-content;
+  position: sticky;
+  top: 70px;
 }
 
 .sideBarItem {
@@ -17,11 +23,11 @@
 .sideBarTitle {
   margin: 10px;
   padding: 5px;
-  width: 80%;
-  border-top: 1px solid #a7a4a4;
-  border-bottom: 1px solid #a7a4a4;
+  width: 90%;
+  border-top: 1px solid #6c757d;
+  border-bottom: 1px solid #6c757d;
   font-family: "Varela Round", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   color: #222;
   font-weight: 600;
   line-height: 20px;
@@ -30,22 +36,30 @@
 
 .sideBarItem > img {
   margin-top: 15px;
+  max-width: 300px;
 }
 
 .sideBarItem > p {
-  padding: 30px;
+  padding: 30px 40px;
+  font-style: italic;
 }
 
 .sideBarList {
   list-style: none;
   margin-bottom: 30px;
+  align-items: center;
 }
 
 .sideBarListItem {
   display: inline-block;
-  width: 50%;
+  width: 45%;
   margin-top: 15px;
   cursor: pointer;
+  text-align: center;
+}
+
+.sideBarListItem::first-letter {
+  text-transform: uppercase;
 }
 
 .sideBarSocial {
@@ -57,7 +71,8 @@
 }
 
 .sideBarIcon {
-  font-size: 16px;
+  color: teal;
+  font-size: 20px;
   margin-left: 10px;
   cursor: pointer;
 }

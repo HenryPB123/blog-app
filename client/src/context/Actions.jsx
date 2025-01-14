@@ -12,7 +12,7 @@ export const Logout = () => ({ type: "LOGOUT" });
 export const updateStart = (userCredentials) => ({ type: "  UPDATE_START" });
 
 export const updateSuccess = (user) => ({
-  type: "uPDATE_SUCCESS",
+  type: "UPDATE_SUCCESS",
   payload: user,
 });
 

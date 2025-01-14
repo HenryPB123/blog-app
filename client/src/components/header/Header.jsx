@@ -4,12 +4,12 @@ const Header = () => {
   return (
     <div className="header">
       <div className="headerTitles">
-        <span className="headerTitleSm">React & Node</span>
-        <span className="headerTitleLg">Blog</span>
+        <span className="headerTitleSm">Read, Write & Enjoy</span>
+        <span className="headerTitleLg">Your Blog</span>
       </div>
       <img
         className="headerImg"
-        src="https://img.freepik.com/fotos-premium/primer-plano-hermosa-vista-naturaleza-hoja-verde-sobre-fondo-verde-borroso-jardin-espacio-copia-utilizando-como-concepto-pagina-portada-fondo_105035-2134.jpg?w=2000"
+        src="https://images.pexels.com/photos/3849336/pexels-photo-3849336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         alt=""
       />
     </div>

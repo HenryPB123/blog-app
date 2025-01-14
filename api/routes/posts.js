@@ -5,8 +5,9 @@ const bcrypt = require("bcrypt"); //it hashes my password to make it more safety
 
 // CREATE POST
 router.post("/", async (req, res) => {
-  const newPost = new Post(req.body);
   try {
+    const newPost = new Post(req.body);
+
     const savedPost = await newPost.save();
 
     res.status(200).json(savedPost);
@@ -19,6 +20,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+
     if (post.username === req.body.username) {
       try {
         const updatedPost = await Post.findByIdAndUpdate(
@@ -71,11 +73,12 @@ router.get("/:id", async (req, res) => {
 
 //GET ALL POSTS
 router.get("/", async (req, res) => {
-  const username = req.query.user;
-  const categoryName = req.query.category;
+  const user = req.query.user;
+  const categoryName = req.query.cat;
+
   try {
     let posts;
-    if (username) posts = await Post.find({ username: username });
+    if (user) posts = await Post.find({ username: user });
     else if (categoryName)
       posts = await Post.find({ categories: { $in: [categoryName] } });
     else {

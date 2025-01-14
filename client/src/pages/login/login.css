@@ -1,22 +1,34 @@
 .login {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.4)
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
     ),
-    url("https://as1.ftcdn.net/v2/jpg/02/26/72/86/1000_F_226728660_sJjnu7sDLXdjKKXaziDOTnWM9HrrdElL.jpg");
+    url("https://images.pexels.com/photos/1906437/pexels-photo-1906437.jpeg?auto=compress&cs=tinysrgb&w=800");
   background-size: cover;
+}
+
+.login-wrap {
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
 }
 
 .loginTitle {
   font-size: 50px;
+  color: #212529;
 }
 
 .loginForm {
+  width: 80%;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -24,6 +36,8 @@
 
 .loginForm > label {
   margin: 10px 0;
+  color: #212529;
+  font-size: 16px;
 }
 
 .loginInput {
@@ -37,9 +51,11 @@
   margin-top: 20px;
   cursor: pointer;
   background-color: lightcoral;
+  font-size: 15px;
   border: none;
   color: white;
   border-radius: 10px;
+  height: 100%;
 }
 
 .loginButton:disabled {
@@ -47,14 +63,31 @@
   background-color: gray;
 }
 
+.registerP {
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 14px;
+}
+
 .loginButtonRegister {
-  position: absolute;
+  /* position: absolute;
   top: 60px;
-  right: 20px;
+  right: 20px; */
   background-color: teal;
   cursor: pointer;
   border: none;
-  padding: 10px;
+  padding: 8px 15px;
   color: white;
-  border-radius: 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.warning {
+  color: lightcoral;
+  margin: 6px;
+  margin-top: 6px;
+  padding: 8px;
+  background-color: #e9ecefdc;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 20px;
 }
