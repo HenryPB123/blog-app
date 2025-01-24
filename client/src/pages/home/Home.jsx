@@ -24,7 +24,24 @@ function Home() {
     <>
       <Header />
       <div className="home">
-        <Posts posts={posts} />
+        {posts.length > 0 ? (
+          <Posts posts={posts} />
+        ) : (
+          <span
+            style={{
+              width: "74%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "30px",
+              fontWeight: "300",
+              fontFamily: "Josefin Sans",
+            }}
+          >
+            There are no post still !!
+          </span>
+        )}
+
         <SideBar />
       </div>
     </>

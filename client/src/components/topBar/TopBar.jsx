@@ -9,8 +9,6 @@ function TopBar() {
   let fallbackImg;
 
   if (user) {
-    console.log("user desde top", user);
-
     fallbackImg = user.profilePic;
   }
 

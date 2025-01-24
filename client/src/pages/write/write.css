@@ -50,13 +50,33 @@
 
 .writeText {
   font-size: 20px;
-  height: 80vh;
+  height: 10vh;
+  margin-bottom: 30px;
+}
+/*! BARRA DE DESPLAZAMIENTO */
+/* Para Chrome, Edge y Safari */
+.writeText::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+.writeText::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color de fondo de la barra de desplazamiento */
+}
+
+.writeText::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color de la "thumb" (la parte que se arrastra) */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 2px solid #f1f1f1; /* Espacio alrededor de la "thumb" */
+}
+
+.writeText::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color de la "thumb" al estar en hover */
 }
 
 .writeSubmit {
   position: absolute;
-  top: 20px;
-  right: 50px;
+  bottom: 15%;
+  right: 12%;
   color: white;
   background-color: teal;
   padding: 10px;
@@ -64,4 +84,70 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
+}
+.writeFormGroupSelect {
+  width: 80%;
+  display: flex;
+  gap: 100px;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-left: 100px;
+}
+.selectCategories {
+  font-size: 18px;
+  font-family: "Varela Round", sans-serif;
+  color: #6c757d;
+  margin: 20px;
+  margin-left: 10%;
+}
+
+#catSelect {
+  margin-right: 100px;
+  font-size: 16px;
+  margin-top: 20px;
+  font-family: "Varela Round", sans-serif;
+
+  padding: 5px;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+}
+.sendCats {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Varela Round", sans-serif;
+
+  color: #6c757d;
+  margin: 20px;
+}
+.category {
+  width: 40%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+.category button {
+  font-size: 12px;
+  align-content: center;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: lightcoral;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+#toSend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 80%;
+  list-style: none;
 }
